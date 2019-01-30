@@ -33,6 +33,8 @@ func main() {
 	// sum := addMany(1, 2, 3, 4, 5)
 	// fmt.Println("sum:", sum)
 
+	// closures
+
 	squares := squareSeq()
 
 	fmt.Println(squares())

@@ -43,6 +43,7 @@ func main() {
 	l = s[3:]
 	fmt.Println("sl3:", l)
 
+	// inner slices in multi dim slices, can be of varying length
 	twoD := make([][]int, 5)
 	for i := 0; i < 5; i++ {
 		inner := i + 1

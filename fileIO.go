@@ -44,4 +44,9 @@ func main() {
 	err = ioutil.WriteFile("./tmp/dat1", d1, 0644)
 	check(err)
 
+	dataObject := "{'name':'yash pradhan', 'username':'user1234', 'phone':'2145112345'}"
+	byteStream := []byte(dataObject)
+	err = ioutil.WriteFile("./tmp/data.txt", byteStream, 0644)
+	check(err)
+
 }

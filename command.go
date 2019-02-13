@@ -48,6 +48,10 @@ func getCPUUsage() () {
 		return
 	}
 
+	normalCC := uint64(0)
+	sysCC := uint64(0)
+	idleCC := uint64(0)
+
 	lines := strings.Split(string(fileContent), "\n")
 	for _, line := range(lines) {
 		fields := strings.Fields(line)
@@ -59,8 +63,22 @@ func getCPUUsage() () {
 					fmt.Println("Error: ", i, fields[i], err)
 				}
 				fmt.Println(i, val)
+
+				if i == 1 {
+					normalCC = val
+				}
+				if i == 3 {
+					sysCC = val
+				}
+				if i == 4 {
+					idleCC = val
+				}
 			}
 		}
+
+		fmt.Println("normal: %v, sys: %v, idle: %v", normalCC, sysCC, idleCC)
+		percentUsage := float64(normalCC + sysCC)*100/float64(normalCC + sysCC + idleCC)
+		fmt.Println("Usage ", percentUsage, "%")
 		return
 	}
 	return
